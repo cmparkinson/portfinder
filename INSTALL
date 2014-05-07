@@ -1,0 +1,36 @@
+Switches:
+---------
+	The switches will need to be configured to send SNMPv1 traps to the IP and
+	UDP port that the server is listening on.
+
+MySQL:
+------
+	Import the schema file.
+
+Client:
+-------
+	The libethernet C library used for low-level communication with the BSD
+	network layer needs to be compiled.  Change to the libethernet directory
+	and execute 'make'.  The compiled library will be named 'libethernet.dylib'
+	and must be copied to the directory that the client jar will be run out of.
+
+	Change to the portfinder-client directory and execute 'mvn package'.  The
+	'portfinder-client-1.0.jar' file and lib/ directory located under the target
+	directory will contain the necessary files to start the application.  Make
+	sure the 'libethernet.dylib' file created above is in the same directory as
+	'portfinder-client-1.0.jar'.
+	
+	Start the client by executing: 'java -jar portfinder-client-1.0.jar'
+	
+Server:
+-------
+	Change to the portfinder-server directory and execute 'mvn package'.  The
+	'portfinder-server-1.0.jar' file and lib/ directory located under the target
+	directory will contain the necessary files to start the application.
+	
+	Database connection information and the UDP port to listen on must be passed
+	on the command line.  The order of the command line arguments is:
+	<database host> <database name> <database user> <database password> <udp port>
+	
+	Start the server by executing:
+	'java -jar portfinder-server-1.0.jar <dbhost> <dbname> <dbuser> <dbpass> <port>'

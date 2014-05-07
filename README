@@ -1,0 +1,37 @@
+Portfinder
+Copyright (C) 2010-2014 Christian Parkinson
+
+Introduction:
+-------------
+	The is a small Java application designed to facilitate the tracing of
+	ethernet cables from wall jacks to their connected switch ports.  The
+	application relies on switches generating SNMP traps, then sending them to
+	the server component of the application whenever a new MAC address is
+	detected on a port.
+		
+	The client portion of the application creates an ethernet frame with a
+	custom MAC address.  The MAC address has a room number and jack index
+	(both values are configurable through the client GUI) encoded in it.
+	The switch detects the new MAC address, generates a trap and sends it to
+	the server portion of the application.  The server captures the trap and
+	stores the information in a database.  The trap information contains
+	everything necessary to determine which switch port that generated the
+	trap.     
+
+	So far the application has only been tested on OSX with Cisco switches,
+	however it should run with only minor modifications on Linux and with other
+	switch vendors.
+
+Contact:
+--------
+	Please file any bug reports on this project's GitHub page, located at:
+	https://github.com/cmparkinson/portfinder/issues
+	
+Installation:
+-------------
+	See the INSTALL file for detailed information.
+	
+Licensing:
+----------
+	This software is distributed under the GPL.  Please read through the files
+	COPYING and LICENSE for more information.
